@@ -14,10 +14,20 @@ const server = new ApolloServer({
   },
 });
 
-server.listen().then(() => {
-  console.log(`
-    🚀  Server is running!
-    🔉  Listening on port 4000
-    📭  Query at http://localhost:4000
-  `);
-});
+server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
+  console.log(` 🚀  Server is running!
+  🔉  Listening on port ${url}`)
+})
+
+
+
+startApolloServer(typeDefs, resolvers)
+
+
+// server.listen().then(() => {
+//   console.log(`
+//     🚀  Server is running!
+//     🔉  Listening on port 4000
+//     📭  Query at http://localhost:4000
+//   `);
+// });
