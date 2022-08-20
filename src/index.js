@@ -14,7 +14,14 @@ const server = new ApolloServer({
   },
 });
 
-server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
-  console.log(` 🚀  Server is running!
-  🔉  Listening on port ${url}`)
-})
+async function startApolloServer(server) {
+  const { url } = await server.listen({ port: process.env.PORT || 4000 })
+  console.log(`Server starts on ${url} port`)
+}
+
+startApolloServer(server)
+
+// server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
+//   console.log(` 🚀  Server is running!
+//   🔉  Listening on port ${url}`)
+// })
